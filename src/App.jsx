@@ -1,6 +1,7 @@
 import './App.css'
 import SearchBar from './components/SearchBar'
 import ProductTable from './components/ProductTable'
+import {useState} from 'react'
 
 
 const PRODUCTS = [
@@ -15,11 +16,22 @@ const PRODUCTS = [
 
 function App() {
 
+  const [filterText, setFilterText] = useState("");
+  const [inStockOnly, setInStockOnly] = useState(false);
 
   return (
     <>
-      <SearchBar />
-      <ProductTable products={PRODUCTS}/>
+      <SearchBar 
+        filterText={filterText}
+        setFilterText={setFilterText}
+        inStockOnly={inStockOnly}
+        setInStockOnly={setInStockOnly}
+      />
+      <ProductTable 
+        products={PRODUCTS}
+        filterText={filterText}
+        inStockOnly={inStockOnly}
+      />
     </>
   )
 }
